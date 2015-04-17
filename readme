@@ -1,3 +1,13 @@
 Tournament Database
 Author: Adam Leonard
 4/17/15
+
+This set of code is used to create tables in a database called tournament in PSQL. This uses Python classes to test and check sql functionality.
+
+To run tests, simply create a psql database via;
+"create database tournament"
+
+Then run;
+"python tournament_test.py"
+
+All tests should pass.
