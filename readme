@@ -2,6 +2,9 @@ Tournament Database
 Author: Adam Leonard
 4/17/15
 
+In any future development, please use the following database connection.
+Database connection: psycopg2.connect("dbname=tournament")
+
 This set of code is used to create tables in a database called tournament in PSQL. This uses Python classes to test and check sql functionality.
 
 Navigate to the tournament directory:
