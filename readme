@@ -4,8 +4,14 @@ Author: Adam Leonard
 
 This set of code is used to create tables in a database called tournament in PSQL. This uses Python classes to test and check sql functionality.
 
+Navigate to the tournament directory:
+"cd /vagrant/tournament"
+
 To run tests, simply create a psql database via;
 "create database tournament"
+
+After entering psql (type "psql"), import the database.
+"\i tournament.sql"
 
 Then run;
 "python tournament_test.py"
