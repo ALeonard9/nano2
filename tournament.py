@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# 
+#
 # tournament.py -- implementation of a Swiss-system tournament
 #
 
@@ -39,7 +39,7 @@ def countPlayers():
 
 def registerPlayer(name):
     """Adds a player to the tournament database."""
-    
+
     name = bleach.clean(name)
     DB = connect()
     cursor = DB.cursor()
@@ -49,7 +49,7 @@ def registerPlayer(name):
 
 """    The database assigns a unique serial id number for the player.  (This
     should be handled by your SQL database schema, not in your Python code.)
-  
+
     Args:
       name: the player's full name (need not be unique).
     """
@@ -81,7 +81,7 @@ def playerStandings():
 
 def reportMatch(winner, loser):
     """Records the outcome of a single match between two players."""
-    
+
     DB = connect()
     cursor = DB.cursor()
     cursor.execute("INSERT INTO match (round_id, player_id, result) VALUES (1, (%s), 1)", (winner,))
@@ -89,12 +89,13 @@ def reportMatch(winner, loser):
     DB.commit()
     DB.close()
 
- 
+
 def swissPairings():
+    """Pairs players based on their win totals."""
     DB = connect()
     cursor = DB.cursor()
     cursor.execute("select r.player_id, r.player_name, e.player_id, e.player_name from (select a.player_id, a.player_name, sum(m.result)::int as wins from player a, match m where a.player_id = m.player_id group by a.player_id order by wins desc) r inner join (select a.player_id, a.player_name, sum(m.result)::int as wins from player a, match m where a.player_id = m.player_id group by a.player_id order by wins desc) e on r.player_id <> e.player_id and r.wins = e.wins where r.player_id < e.player_id")
     a = cursor.fetchall()
     DB.commit()
     DB.close()
-    return a 
+    return a

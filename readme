@@ -20,3 +20,6 @@ Then run;
 "python tournament_test.py"
 
 All tests should pass.
+
+
+###Please note, there are planned improvements to make this usable across multiple tournaments. Because of this there are two tables (tournament and round) that are defined but not used.
