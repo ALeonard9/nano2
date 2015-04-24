@@ -13,6 +13,9 @@ Navigate to the tournament directory:
 To run tests, simply create a psql database via;
 "create database tournament"
 
+To connect to the database;
+"\c tournament"
+
 After entering psql (type "psql"), import the database.
 "\i tournament.sql"
 
